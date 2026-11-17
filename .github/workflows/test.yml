@@ -30,3 +30,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: cargo test --locked
+  c-cpp:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        sdk: [c, cpp]
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends libcurl4-openssl-dev
+      - run: cmake -S ${{ matrix.sdk }} -B build -DCMAKE_BUILD_TYPE=Release
+      - run: cmake --build build --parallel
+      - run: ctest --test-dir build --output-on-failure

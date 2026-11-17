@@ -1,0 +1,46 @@
+# Release the C or C++ SDK as source archives on GitHub when a tag is pushed:
+#   c-v<version>    -> certone-c-<version>.tar.gz and .zip    (c/)
+#   cpp-v<version>  -> certone-cpp-<version>.tar.gz and .zip  (cpp/ and the c/ it builds on)
+# The version must match project(... VERSION) in the SDK's CMakeLists.txt. Each archive also holds
+# SPEC.md, the conformance fixtures used by the offline tests, LICENSE and NOTICE.
+name: Release C and C++ SDKs
+on:
+  push:
+    tags: ["c-v*", "cpp-v*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Resolve SDK and version
+        id: v
+        run: |
+          tag="${GITHUB_REF_NAME}"; sdk="${tag%%-v*}"; ver="${tag#*-v}"
+          declared=$(grep -m1 -oP 'project\([^)]*VERSION \K[0-9.]+' "$sdk/CMakeLists.txt")
+          [ "$ver" = "$declared" ] || { echo "tag $tag does not match $sdk/CMakeLists.txt version $declared"; exit 1; }
+          echo "sdk=$sdk" >> "$GITHUB_OUTPUT"; echo "ver=$ver" >> "$GITHUB_OUTPUT"
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends libcurl4-openssl-dev
+      - name: Build and test
+        run: |
+          cmake -S "${{ steps.v.outputs.sdk }}" -B build -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --parallel
+          ctest --test-dir build --output-on-failure
+      - name: Package source archives
+        run: |
+          name="certone-${{ steps.v.outputs.sdk }}-${{ steps.v.outputs.ver }}"
+          dirs="c"; [ "${{ steps.v.outputs.sdk }}" = "cpp" ] && dirs="cpp c"
+          mkdir -p "dist/$name"
+          cp -r $dirs conformance SPEC.md LICENSE NOTICE "dist/$name/"
+          rm -rf "dist/$name"/*/ci
+          (cd dist && tar -czf "$name.tar.gz" "$name" && zip -qr "$name.zip" "$name" && sha256sum "$name.tar.gz" "$name.zip" > "$name.sha256")
+      - name: Publish the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          name="certone-${{ steps.v.outputs.sdk }}-${{ steps.v.outputs.ver }}"
+          title="CertOne ${{ steps.v.outputs.sdk == 'c' && 'C' || 'C++' }} SDK ${{ steps.v.outputs.ver }}"
+          gh release create "${GITHUB_REF_NAME}" "dist/$name.tar.gz" "dist/$name.zip" "dist/$name.sha256" \
+            --title "$title" \
+            --notes "Source release of the $title, under the Apache License 2.0. Build with CMake and libcurl; see ${{ steps.v.outputs.sdk }}/README.md inside the archive. Checksums are in $name.sha256."
