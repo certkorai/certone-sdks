@@ -1,0 +1,31 @@
+# Publish @certkor/certone to npm when a tag js-v<version> is pushed, e.g. js-v0.1.1.
+# Uses npm trusted publishing (OIDC): no npm token is stored in this repository.
+name: Publish JavaScript SDK
+on:
+  push:
+    tags: ["js-v*"]
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: js
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - name: npm with trusted publishing support
+        run: npm install -g npm@11.5.1
+      - name: Tag matches package.json version
+        run: |
+          v=$(node -p "require('./package.json').version")
+          [ "js-v$v" = "${GITHUB_REF_NAME}" ] || { echo "tag ${GITHUB_REF_NAME} does not match version $v"; exit 1; }
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: npm publish
