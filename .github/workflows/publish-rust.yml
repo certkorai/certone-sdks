@@ -1,0 +1,24 @@
+# Publish the certone crate to crates.io when a tag rust-v<version> is pushed, e.g. rust-v0.1.0.
+# First releases use the CARGO_REGISTRY_TOKEN secret; switch to crates.io trusted publishing after.
+name: Publish Rust SDK
+on:
+  push:
+    tags: ["rust-v*"]
+permissions:
+  contents: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rust
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tag matches Cargo.toml version
+        run: |
+          v=$(grep -m1 '^version' Cargo.toml | cut -d'"' -f2)
+          [ "rust-v$v" = "${GITHUB_REF_NAME}" ] || { echo "tag ${GITHUB_REF_NAME} does not match version $v"; exit 1; }
+      - run: cargo test --locked
+      - run: cargo publish --locked
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}

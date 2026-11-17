@@ -5,11 +5,11 @@ edition = "2021"
 description = "Rust client for the CertOne control-plane API: submit AI compliance checks, poll reports, ingest run-at-source reports, fetch attestations."
 license = "Apache-2.0"
 repository = "https://github.com/certkorai/certone-sdks"
+homepage = "https://certkor.ai/docs/sdk-cli/"
 authors = ["Certkor AI"]
 readme = "README.md"
 keywords = ["certone", "compliance", "ai", "attestation", "sdk"]
 categories = ["api-bindings"]
-publish = false
 
 [dependencies]
 reqwest = { version = "0.12", default-features = false, features = ["blocking", "multipart", "json", "rustls-tls"] }
