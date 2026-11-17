@@ -4,8 +4,7 @@ Official client libraries for [CertOne](https://certkor.ai), the zero-trust AI s
 Submit an AI system's project for a confidential scan, wait for the verdict, and read the findings,
 the full report and the signed compliance attestation, from any language.
 
-Every SDK implements the same small client over the CertOne REST API, described in
-[SPEC.md](SPEC.md), and is tested against the same fixtures in [conformance/fixtures](conformance/fixtures).
+Every SDK implements the same contract steps over the CertOne REST API (submit a compliance check, wait for the verdict, read the full report, ingest a report computed at the source, and fetch the attestation), and is tested against the same fixtures in [conformance/fixtures](conformance/fixtures).
 
 | Language | Install | Requires |
 |---|---|---|
@@ -29,7 +28,7 @@ an environment variable such as `CERTONE_API_KEY`; never commit it.
 
 - Guides for every integration: https://certkor.ai/docs/
 - SDK and CLI guide: https://certkor.ai/docs/sdk-cli/
-- API contract shared by all SDKs: [SPEC.md](SPEC.md)
+- API reference shared by all SDKs: [API reference](SPEC.md)
 
 ## Tests
 

@@ -1,8 +1,7 @@
 # CertOne Rust SDK
 
 A blocking Rust client for the CertOne control-plane API (crate `certone`). It implements the
-contract in [`SPEC.md`](../SPEC.md): submit a compliance check, wait for the verdict, read the
-full report, ingest a report computed at the source, and fetch the attestation.
+contract steps: submit a compliance check, wait for the verdict, read the full report, ingest a report computed at the source, and fetch the attestation.
 
 TLS is rustls (no OpenSSL). No async runtime is required.
 
@@ -57,7 +56,7 @@ did not pass), `is_auth()`, `is_timeout()`.
 
 ## Quickstart and CI
 
-`examples/quickstart.rs` runs the 7-step conformance flow from `SPEC.md` against a live
+`examples/quickstart.rs` runs the seven contract steps against a live
 control plane:
 
 ```bash

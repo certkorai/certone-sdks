@@ -1,7 +1,7 @@
 # CertOne JavaScript/TypeScript SDK
 
 A typed client for the CertOne control-plane API, for Node.js (18 or later) and browsers. It
-implements the cross-language contract in [`SPEC.md`](../SPEC.md). No runtime dependencies:
+implements the contract steps: submit a compliance check, wait for the verdict, read the full report, ingest a report computed at the source, and fetch the attestation. No runtime dependencies:
 it uses the platform `fetch`, `FormData`, `Blob` and Web Crypto (or `node:crypto` on Node.js).
 Ships ESM and CommonJS builds with type declarations.
 

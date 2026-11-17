@@ -1,6 +1,6 @@
 # CertOne C SDK
 
-A C11 client for the CertOne control-plane API (`SPEC.md`), for embedded Linux devices and
+A C11 client for the CertOne control-plane API, for embedded Linux devices and
 gateways (ARM64, RISC-V) and native build tooling. It depends only on **libcurl** (>= 7.56): JSON
 reading and SHA-256 are built in.
 

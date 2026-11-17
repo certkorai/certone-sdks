@@ -3,7 +3,7 @@
 A typed async client for the CertOne control-plane API (`Certkor.CertOne`, .NET 8+). Submit AI-system
 snapshots for compliance checks or confidential processing, wait for verdicts, fetch report documents
 and attestations, ingest run-at-source reports and list AI systems. No runtime dependencies beyond the
-.NET base library; trimming and AOT safe. It implements the contract in [`SPEC.md`](../SPEC.md).
+.NET base library; trimming and AOT safe. It implements the contract steps: submit a compliance check, wait for the verdict, read the full report, ingest a report computed at the source, and fetch the attestation.
 
 ## Install
 

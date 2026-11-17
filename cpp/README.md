@@ -1,6 +1,6 @@
 # CertOne C++ SDK
 
-A C++17 client for the CertOne control-plane API (`SPEC.md`): an RAII wrapper over the C SDK
+A C++17 client for the CertOne control-plane API: an RAII wrapper over the C SDK
 (`c`) with `std::string`, `std::optional` and exceptions. It depends only on libcurl.
 
 ## Build and install

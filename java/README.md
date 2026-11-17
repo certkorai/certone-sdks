@@ -1,7 +1,7 @@
 # CertOne Java SDK
 
 A typed, thread-safe Java client for the CertOne control-plane API (Java 17+). It implements the
-operations of [`SPEC.md`](../SPEC.md) on `java.net.http.HttpClient`; Jackson is the only runtime
+contract steps (submit a compliance check, wait for the verdict, read the full report, ingest a report computed at the source, and fetch the attestation) on `java.net.http.HttpClient`; Jackson is the only runtime
 dependency.
 
 ## Install
