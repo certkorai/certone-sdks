@@ -1,6 +1,6 @@
 {
   "name": "@certkor/certone",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Typed JavaScript/TypeScript client for the CertOne control-plane API (Node.js and browsers, zero runtime dependencies).",
   "license": "Apache-2.0",
   "author": "Certkor AI",
