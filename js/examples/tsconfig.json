@@ -1,0 +1,10 @@
+// Type-checks the TypeScript quickstart against the BUILT package (resolved through the package's
+// own "exports" map), so the published .d.ts files are what gets verified. Run after `npm run build`.
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "types": ["node"]
+  },
+  "include": ["quickstart.ts"]
+}

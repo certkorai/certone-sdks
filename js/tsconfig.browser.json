@@ -1,0 +1,11 @@
+// Guard: the browser entry (and everything it imports) must compile with the DOM lib only and no
+// Node.js types, so a Node-only API (Buffer, node:*, process) can never leak into browser builds.
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2022", "DOM"],
+    "types": []
+  },
+  "include": [],
+  "files": ["src/index.ts"]
+}

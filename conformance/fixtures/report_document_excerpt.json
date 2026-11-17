@@ -1,0 +1,53 @@
+{
+  "report_id": "report-bce1fa3cd2cd",
+  "verdict": {
+    "status": "fail",
+    "fail_on": "high",
+    "reason": "3 issue(s) at or above 'high' (worst: high)"
+  },
+  "summary": {
+    "total_issues": 6,
+    "by_severity": {
+      "low": 0,
+      "medium": 3,
+      "high": 3
+    },
+    "by_topic": {
+      "accountability": 1,
+      "privacy": 2,
+      "security": 1,
+      "transparency": 2
+    },
+    "by_component": {
+      "input": 2,
+      "model": 4
+    },
+    "rules_evaluated": 7,
+    "rules_triggered": 6
+  },
+  "issues": [
+    {
+      "issue_id": "iss-0001",
+      "compliance_topic": "privacy",
+      "component": "input",
+      "description": "Personal data present in inputs without documented data-governance or anonymization controls (EU AI Act Art. 10). (2 occurrence(s) across 1 file(s): sample-project/data/train.csv)",
+      "regulatory_references": [
+        {
+          "framework": "EU AI Act",
+          "article": "Article 10"
+        },
+        {
+          "framework": "GDPR",
+          "article": "Article 5"
+        }
+      ],
+      "location": {
+        "artifact": "sample-project/data/train.csv"
+      },
+      "severity": "high",
+      "suggested_fix": "Pseudonymize or anonymize personal data in a preprocessing step and document the data-governance measures in the Annex IV technical documentation.",
+      "detected_by": "static_analysis",
+      "rule_path": "eu_ai_act/privacy/data_governance_10.aipac"
+    }
+  ]
+}

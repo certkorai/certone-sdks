@@ -1,0 +1,16 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+find_dependency(CURL 7.56)
+include("${CMAKE_CURRENT_LIST_DIR}/certoneTargets.cmake")
+
+# certone::certone: the static library when installed, else the shared one.
+if(NOT TARGET certone::certone)
+  add_library(certone::certone INTERFACE IMPORTED)
+  if(TARGET certone::certone_static)
+    set_target_properties(certone::certone PROPERTIES INTERFACE_LINK_LIBRARIES certone::certone_static)
+  else()
+    set_target_properties(certone::certone PROPERTIES INTERFACE_LINK_LIBRARIES certone::certone_shared)
+  endif()
+endif()
+check_required_components(certone)

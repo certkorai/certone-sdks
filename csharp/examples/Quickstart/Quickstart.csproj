@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Certkor.CertOne.Examples.Quickstart</RootNamespace>
+    <!-- A console app has no synchronization context to avoid. -->
+    <NoWarn>$(NoWarn);CA2007</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Certkor.CertOne\Certkor.CertOne.csproj" />
+  </ItemGroup>
+
+</Project>

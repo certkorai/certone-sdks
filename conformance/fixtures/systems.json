@@ -1,0 +1,83 @@
+[
+  {
+    "id": "9356b603af1c419eb27e09b468463879",
+    "slug": "sdk-edge-model",
+    "name": "SDK Edge Model",
+    "lifecycle": "prod",
+    "owner_team_id": null,
+    "description": null,
+    "created_at": "2026-11-08T19:43:23.230248",
+    "regions": [
+      "EU"
+    ],
+    "environments": [
+      "edge"
+    ],
+    "standards": [
+      "eu_ai_act",
+      "gdpr",
+      "iso_42001",
+      "mitre_atlas",
+      "oecd_ai"
+    ],
+    "scans": 1,
+    "open_issues": 0,
+    "last_verdict": "pass",
+    "attested": true,
+    "attestation_status": "valid",
+    "risk": "low",
+    "last_evaluated": "2026-11-08T19:43:23.231273"
+  },
+  {
+    "id": "ead16e38d09a4654931801c2c1cb40cb",
+    "slug": "sdk-sample",
+    "name": "SDK Sample",
+    "lifecycle": "prod",
+    "owner_team_id": null,
+    "description": null,
+    "created_at": "2026-11-08T19:43:23.102222",
+    "regions": [
+      "ZZ"
+    ],
+    "environments": [
+      "api"
+    ],
+    "standards": [
+      "iso_42001",
+      "mitre_atlas"
+    ],
+    "scans": 1,
+    "open_issues": 6,
+    "last_verdict": "fail",
+    "attested": false,
+    "attestation_status": "none",
+    "risk": "high",
+    "last_evaluated": "2026-11-08T19:43:23.105333"
+  },
+  {
+    "id": "74985de0c7dd4da3bfe36e4270db252f",
+    "slug": "default",
+    "name": "default",
+    "lifecycle": "prod",
+    "owner_team_id": null,
+    "description": null,
+    "created_at": "2026-11-08T19:43:08.242132",
+    "regions": [
+      "ZZ"
+    ],
+    "environments": [
+      "api"
+    ],
+    "standards": [
+      "iso_42001",
+      "mitre_atlas"
+    ],
+    "scans": 1,
+    "open_issues": 6,
+    "last_verdict": "fail",
+    "attested": false,
+    "attestation_status": "none",
+    "risk": "high",
+    "last_evaluated": "2026-11-08T19:43:08.243857"
+  }
+]

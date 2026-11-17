@@ -1,0 +1,31 @@
+{
+  "attestation_id": "att-43d463ff6d874d1a92be85ed768b762f",
+  "input_version": "1.0",
+  "issued_at": "2026-11-08T19:43:23Z",
+  "test_status": {
+    "status": "Passed",
+    "no_compliance_issues": true,
+    "energy_under_threshold": true,
+    "no_log_errors_or_warnings": true
+  },
+  "issuance": {
+    "issued_to": "sdk-demo",
+    "issued_by": "CertKor AI"
+  },
+  "conditional_validity": {
+    "valid": true,
+    "covers": [
+      "binary",
+      "configuration",
+      "dependency_graph"
+    ]
+  },
+  "fingerprint": {
+    "algorithm": "HMAC-SHA256",
+    "value": "8c56029fe9741fd69ae743e3cae05ce8d13a48c22face652bafe62490d3eb15a",
+    "tpm_slot_ref": "certone-attestation"
+  },
+  "log": [],
+  "signature": "790c4e255e6026874cf7d35e3968095c2e0f155e5ad4bdd2ba08579465c54236",
+  "signature_algorithm": "HMAC-SHA256"
+}

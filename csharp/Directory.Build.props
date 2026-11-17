@@ -1,0 +1,22 @@
+<Project>
+  <!-- Shared settings for every project in the CertOne .NET SDK. -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>12.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <Deterministic>true</Deterministic>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <Authors>Certkor AI</Authors>
+    <Company>Certkor AI</Company>
+    <Product>CertOne</Product>
+    <Copyright>Copyright 2026 Certkor AI Inc.</Copyright>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/certkorai/certone-sdks</RepositoryUrl>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+</Project>

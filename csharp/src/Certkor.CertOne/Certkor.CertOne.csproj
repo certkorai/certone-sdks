@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Certkor.CertOne</RootNamespace>
+    <AssemblyName>Certkor.CertOne</AssemblyName>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IsAotCompatible>true</IsAotCompatible>
+    <IsTrimmable>true</IsTrimmable>
+
+    <IsPackable>true</IsPackable>
+    <PackageId>Certkor.CertOne</PackageId>
+    <Title>CertOne SDK for .NET</Title>
+    <Description>Typed async client for the CertOne control-plane API: submit AI-system snapshots for compliance checks and confidential processing, wait for verdicts, fetch report documents and attestations, ingest run-at-source reports and list AI systems.</Description>
+    <PackageTags>certone;certkor;ai-governance;compliance;attestation;eu-ai-act;iso-42001</PackageTags>
+    <PackageProjectUrl>https://certkor.ai</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\..\..\LICENSE" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Certkor.CertOne.Tests" />
+  </ItemGroup>
+
+</Project>

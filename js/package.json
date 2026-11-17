@@ -1,0 +1,80 @@
+{
+  "name": "@certkor/certone",
+  "version": "0.1.0",
+  "description": "Typed JavaScript/TypeScript client for the CertOne control-plane API (Node.js and browsers, zero runtime dependencies).",
+  "license": "Apache-2.0",
+  "author": "Certkor AI",
+  "homepage": "https://certkor.ai",
+  "keywords": [
+    "certone",
+    "certkor",
+    "ai-compliance",
+    "ai-governance",
+    "attestation",
+    "sdk"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "./dist/cjs/index.node.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/cjs/index.node.d.ts",
+  "browser": {
+    "./dist/cjs/index.node.js": "./dist/cjs/index.js",
+    "./dist/esm/index.node.js": "./dist/esm/index.js"
+  },
+  "exports": {
+    ".": {
+      "node": {
+        "import": {
+          "types": "./dist/esm/index.node.d.ts",
+          "default": "./dist/esm/index.node.js"
+        },
+        "require": {
+          "types": "./dist/cjs/index.node.d.ts",
+          "default": "./dist/cjs/index.node.js"
+        }
+      },
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "npm run clean && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node -e \"require('node:fs').writeFileSync('dist/cjs/package.json', JSON.stringify({type:'commonjs'}))\"",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.browser.json",
+    "typecheck:examples": "tsc -p examples/tsconfig.json",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm run build && npm run typecheck:examples && npm test && npm run lint:package",
+    "prepack": "npm run build",
+    "lint:package": "attw --pack ."
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "0.18.5",
+    "@types/node": "20.19.43",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/certkorai/certone-sdks.git",
+    "directory": "js"
+  },
+  "bugs": {
+    "url": "https://github.com/certkorai/certone-sdks/issues"
+  }
+}
