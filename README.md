@@ -7,18 +7,17 @@ the full report and the signed compliance attestation, from any language.
 Every SDK implements the same small client over the CertOne REST API, described in
 [SPEC.md](SPEC.md), and is tested against the same fixtures in [conformance/fixtures](conformance/fixtures).
 
-| Language | Folder | Package | Requires |
-|---|---|---|---|
-| Python | [certone-sdk-python](https://pypi.org/project/certone-sdk/) | `certone-sdk` on PyPI | Python 3.10+ |
-| JavaScript and TypeScript | [js](js) | `@certkor/certone` | Node.js 18+ or a browser |
-| Java | [java](java) | `ai.certkor:certone-sdk` | Java 17+ |
-| C# and .NET | [csharp](csharp) | `Certkor.CertOne` | .NET 8 |
-| Rust | [rust](rust) | `certone` | stable Rust |
-| C | [c](c) | `libcertone` | C11 and libcurl |
-| C++ | [cpp](cpp) | `libcertone++` | C++17 |
+| Language | Install | Requires |
+|---|---|---|
+| Python | `pip install certone-sdk` ([PyPI](https://pypi.org/project/certone-sdk/)) | Python 3.10+ |
+| JavaScript and TypeScript | `npm install @certkor/certone` ([npm](https://www.npmjs.com/package/@certkor/certone)) | Node.js 18+ or a browser |
+| Rust | `cargo add certone` ([crates.io](https://crates.io/crates/certone)) | stable Rust |
+| C | [release archive](https://github.com/certkorai/certone-sdks/releases/tag/c-v0.1.0), built with CMake | C11 and libcurl |
+| C++ | [release archive](https://github.com/certkorai/certone-sdks/releases/tag/cpp-v0.1.0), built with CMake (includes the C SDK) | C++17 and libcurl |
+| Java | build from [java](java) | Java 17+ |
+| C# and .NET | build from [csharp](csharp) | .NET 8 |
 
-The Python SDK is published on PyPI. The other packages are being published to their registries;
-until then, build them from this repository by following each folder's README.
+Java (Maven Central) and C# (NuGet) packages are coming; until then, build them from their folders.
 
 ## Get an API key
 
